@@ -1,0 +1,54 @@
+.default {
+  width: 120px;
+}
+
+.high {
+  width: 480px;
+}
+
+.medium {
+  width: 320px;
+}
+
+.videoCard {
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgb(0 0 0 / 12%);
+
+  img {
+    max-width: 100%;
+  }
+
+  h5, input {
+    margin-top: 10px;
+    max-width: 100%;
+  }
+}
+
+@keyframes placeHolderShimmer{
+  0%{
+    background-position: -468px 0
+  }
+  100%{
+    background-position: 468px 0
+  }
+}
+
+.animated-background {
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+  height: 300px;
+  position: relative;
+}

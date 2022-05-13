@@ -1,0 +1,30 @@
+<div class="search">
+  <input type="search" placeholder="Enter Channel ID" autofocus [(ngModel)]="searchID"
+         (keyup.enter)="search()"/>
+  <button (click)="search()" [disabled]="submitted">search
+  </button>
+</div>
+<div style="color: red" *ngIf="notFound">
+  cannot Find any channel related to entered id
+</div>
+<div class="page-Content" *ngIf="channel">
+  <button class="refreshVids" (click)="refreshVideos()">Refresh Videos</button>
+  <div *ngIf="items&&items.length==0">
+    this channel not contain any video
+  </div>
+  <div *ngIf="items&&items.length>0">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 cardContainer "
+           *ngFor="let item of items;let i=index"
+           [draggable]="true"
+           [class.dragging]="i === this.draggingIndex"
+           (dragstart)="onDragStart(i)"
+           (dragenter)="onDragEnter(i)"
+           (dragend)="onDragEnd()">
+        <app-video-card [video]="item['snippet']" [screenSize]="screenSize"
+                      (noteUpdated)="updateNote($event,i)"></app-video-card>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="loadingAnchor"></div>
